@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Redirecting you to leave a review...</p>
+    <script>
+        const ASIN = "B0G4VF6R64"; // REPLACE WITH YOUR ASIN
+        
+        const regions = {
+            US: `https://www.amazon.com/review/create-review?asin=${ASIN}`,
+            CA: `https://www.amazon.ca/review/create-review?asin=${ASIN}`,
+            UK: `https://www.amazon.co.uk/review/create-review?asin=${ASIN}`,
+            DE: `https://www.amazon.de/review/create-review?asin=${ASIN}`,
+            FR: `https://www.amazon.fr/review/create-review?asin=${ASIN}`,
+            IT: `https://www.amazon.it/review/create-review?asin=${ASIN}`,
+            ES: `https://www.amazon.es/review/create-review?asin=${ASIN}`,
+            NL: `https://www.amazon.nl/review/create-review?asin=${ASIN}`,
+            BE: `https://www.amazon.com.be/review/create-review?asin=${ASIN}`,
+            PL: `https://www.amazon.pl/review/create-review?asin=${ASIN}`,
+            SE: `https://www.amazon.se/review/create-review?asin=${ASIN}`,
+            AU: `https://www.amazon.com.au/review/create-review?asin=${ASIN}`,
+            JP: `https://www.amazon.co.jp/review/create-review?asin=${ASIN}`,
+            SG: `https://www.amazon.sg/review/create-review?asin=${ASIN}`,
+            AE: `https://www.amazon.ae/review/create-review?asin=${ASIN}`,
+            SA: `https://www.amazon.sa/review/create-review?asin=${ASIN}`,
+            IN: `https://www.amazon.in/review/create-review?asin=${ASIN}`,
+            BR: `https://www.amazon.com.br/review/create-review?asin=${ASIN}`,
+            MX: `https://www.amazon.com.mx/review/create-review?asin=${ASIN}`
+        };
+        
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        
+        let destination = regions.US; // Default
+        
+        // Canada
+        if (timezone.startsWith("America/Toronto") || 
+            timezone.startsWith("America/Vancouver") || 
+            timezone.startsWith("America/Edmonton") ||
+            timezone.startsWith("America/Winnipeg") ||
+            timezone.startsWith("America/Halifax") ||
+            timezone.startsWith("America/St_Johns") ||
+            timezone.startsWith("America/Regina") ||
+            timezone.startsWith("America/Yellowknife") ||
+            timezone.startsWith("America/Whitehorse") ||
+            timezone.startsWith("America/Moncton") ||
+            timezone.startsWith("America/Goose_Bay") ||
+            timezone.startsWith("America/Iqaluit")) {
+            destination = regions.CA;
+        }
+        // UK & Ireland
+        else if (timezone.startsWith("Europe/London") || 
+                 timezone.startsWith("Europe/Dublin")) {
+            destination = regions.UK;
+        }
+        // Germany, Austria, Switzerland (German)
+        else if (timezone.startsWith("Europe/Berlin") || 
+                 timezone.startsWith("Europe/Vienna") ||
+                 timezone.startsWith("Europe/Zurich")) {
+            destination = regions.DE;
+        }
+        // France
+        else if (timezone.startsWith("Europe/Paris")) {
+            destination = regions.FR;
+        }
+        // Italy
+        else if (timezone.startsWith("Europe/Rome")) {
+            destination = regions.IT;
+        }
+        // Spain
+        else if (timezone.startsWith("Europe/Madrid") ||
+                 timezone.startsWith("Atlantic/Canary")) {
+            destination = regions.ES;
+        }
+        // Netherlands
+        else if (timezone.startsWith("Europe/Amsterdam")) {
+            destination = regions.NL;
+        }
+        // Belgium
+        else if (timezone.startsWith("Europe/Brussels")) {
+            destination = regions.BE;
+        }
+        // Poland
+        else if (timezone.startsWith("Europe/Warsaw")) {
+            destination = regions.PL;
+        }
+        // Sweden
+        else if (timezone.startsWith("Europe/Stockholm")) {
+            destination = regions.SE;
+        }
+        // Australia
+        else if (timezone.startsWith("Australia")) {
+            destination = regions.AU;
+        }
+        // Japan
+        else if (timezone.startsWith("Asia/Tokyo")) {
+            destination = regions.JP;
+        }
+        // Singapore
+        else if (timezone.startsWith("Asia/Singapore")) {
+            destination = regions.SG;
+        }
+        // UAE
+        else if (timezone.startsWith("Asia/Dubai")) {
+            destination = regions.AE;
+        }
+        // Saudi Arabia
+        else if (timezone.startsWith("Asia/Riyadh")) {
+            destination = regions.SA;
+        }
+        // India
+        else if (timezone.startsWith("Asia/Kolkata") ||
+                 timezone.startsWith("Asia/Calcutta")) {
+            destination = regions.IN;
+        }
+        // Brazil
+        else if (timezone.startsWith("America/Sao_Paulo") ||
+                 timezone.startsWith("America/Rio_Branco") ||
+                 timezone.startsWith("America/Manaus") ||
+                 timezone.startsWith("America/Cuiaba") ||
+                 timezone.startsWith("America/Fortaleza") ||
+                 timezone.startsWith("America/Recife") ||
+                 timezone.startsWith("America/Bahia") ||
+                 timezone.startsWith("America/Belem")) {
+            destination = regions.BR;
+        }
+        // Mexico
+        else if (timezone.startsWith("America/Mexico_City") ||
+                 timezone.startsWith("America/Cancun") ||
+                 timezone.startsWith("America/Merida") ||
+                 timezone.startsWith("America/Monterrey") ||
+                 timezone.startsWith("America/Tijuana") ||
+                 timezone.startsWith("America/Chihuahua") ||
+                 timezone.startsWith("America/Mazatlan") ||
+                 timezone.startsWith("America/Hermosillo")) {
+            destination = regions.MX;
+        }
+        
+        window.location.href = destination;
+    </script>
+</body>
+</html>
